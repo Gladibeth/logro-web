@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Arial Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ARIAL.woff') format('woff');
+  }
+@font-face {
+  font-family: 'Arial Narrow';
+  src: url('../fonts/ArialNarrow.woff2') format('woff2'),
+      url('../fonts/ArialNarrow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial MT';
+  src: url('../fonts/ArialMTBlack.woff2') format('woff2'),
+      url('../fonts/ArialMTBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../fonts/ArialMT.woff2') format('woff2'),
+      url('../fonts/ArialMT.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial Th';
+  src: url('../fonts/ArialTh.woff2') format('woff2'),
+      url('../fonts/ArialTh.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
