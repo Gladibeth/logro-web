@@ -1,0 +1,9 @@
+{
+  "name": "hipdevteam/advanced-custom-fields-pro",
+  "type": "wordpress-plugin",
+  "description": "Fork of Advanced Custom Fields so I can manage it with composer",
+  "require": {
+    "php": ">=5.6",
+    "composer/installers": "^1"
+  }
+}
