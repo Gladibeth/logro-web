@@ -23,10 +23,10 @@
 define( 'DB_NAME', 'db_logro' );
 
 /** Database username */
-define( 'DB_USER', 'admin' );
+define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', '123456' );
+define( 'DB_PASSWORD', '' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -38,6 +38,9 @@ define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', '' );
 
 define('FS_METHOD', 'direct');
+
+define('WP_HOME', 'http://localhost:8080/logro-web/');
+define('WP_SITEURL', 'http://localhost:8080/logro-web/');
 
 /**#@+
  * Authentication unique keys and salts.

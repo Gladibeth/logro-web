@@ -4,6 +4,7 @@
         <div class="main-description g-textshort-one no-mobile"><?php the_excerpt(); ?></div>
     </a>
     <ul class="main-notes__info no-mobile">
+    <?php if (get_field('tiempo_de_lectura')): ?>
         <li>
         <svg xmlns="http://www.w3.org/2000/svg" width="19.591" height="19.591" viewBox="0 0 19.591 19.591">
             <g id="Grupo_142" data-name="Grupo 142" transform="translate(-379.142 -1389.814)">
@@ -13,9 +14,11 @@
         </svg>
         
         <span>
-        <?php echo time_elapsed_string(get_the_date('Y-m-d H:i:s')); ?>
+        <?php echo get_field('tiempo_de_lectura'); ?>
+       
         </span>                
         </li>
+        <?php endif; ?>
         <?php if (get_field('url_referencia')): ?>
             <li>
             <svg xmlns="http://www.w3.org/2000/svg" width="19.591" height="19.591" viewBox="0 0 19.591 19.591">

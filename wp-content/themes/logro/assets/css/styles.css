@@ -1023,6 +1023,8 @@ input[type=search] {
 }
 .main-logos__img {
   margin-right: 10px;
+  width: 40px;
+  height: 40px;
 }
 @media (min-width: 0px) and (max-width: 575px) {
   .main-logos__img {
@@ -1047,6 +1049,10 @@ input[type=search] {
     justify-content: center;
     margin-right: 0;
   }
+}
+.main-logos__img img {
+  width: 100%;
+  height: 100%;
 }
 @media (min-width: 0px) and (max-width: 575px) {
   .main-logos__name {
@@ -1153,6 +1159,12 @@ input[type=search] {
     margin-right: 0;
   }
 }
+.main-notes__info-single li a {
+  color: #808080;
+  font-family: "Arial Regular", sans-serif;
+  font-size: 0.938em;
+  font-weight: 400;
+}
 .main-notes__info li {
   align-items: center;
   color: #808080;
@@ -1167,9 +1179,20 @@ input[type=search] {
 .main-notes__info li svg {
   margin-right: 10px;
 }
+.main-notes__info li a {
+  color: #808080;
+  font-family: "Arial Regular", sans-serif;
+  font-size: 0.938em;
+  font-weight: 400;
+}
 
 .main-works__img {
   height: 15vh;
+}
+.main-works__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .main-works__item {
   margin: 0 4px;

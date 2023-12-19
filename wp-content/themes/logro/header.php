@@ -11,9 +11,10 @@
       <div class="main-header__left flex">
         <div class="main-header__logo g-flex-center-align">
           <?php if (get_field('logo_light', 'options')) : ?>
+            <a href="<?php echo esc_url(home_url('/')); ?>">
               <img class="main-header__logo-light" src="<?php echo get_field('logo_light', 'options'); ?>" alt="">
-              <img class="main-header__logo-dark" src="<?php echo get_field('logo_dark', 'options'); ?>" alt="">
-          <?php else : ?>
+              </a>
+            <?php else : ?>
             <a href="<?php echo esc_url(home_url('/')); ?>">
               LOG_O     
             </a>
@@ -46,32 +47,50 @@
       <div class="main-header__right ">
         <div class="main-header__icons g-flex-center-align">
           <button id="dark-theme">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16.273" height="17.78" viewBox="0 0 16.273 17.78">
-              <path id="Trazado_187" data-name="Trazado 187" d="M3189.4,45.1a.357.357,0,0,1,.26-.615,8.609,8.609,0,0,0,7.992-12.509.358.358,0,0,1,.41-.5c6.45,1.6,7.677,8.844,5.321,12.9C3201.2,48.142,3194.856,50.407,3189.4,45.1Z" transform="translate(-3188.776 -30.959)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-            </svg>            
+            <svg xmlns="http://www.w3.org/2000/svg" width="18.996" height="20.055" viewBox="0 0 18.996 20.055">
+              <g id="Grupo_13" data-name="Grupo 13" transform="translate(-406.502 -16.972)">
+                <path id="Trazado_2" data-name="Trazado 2" d="M415.237,37.027a10.213,10.213,0,0,1-8.535-4.562,1.171,1.171,0,0,1,0-1.311,1.136,1.136,0,0,1,1.2-.484,8.394,8.394,0,0,0,3.089.058h0a8.381,8.381,0,0,0,6.087-12.073,1.131,1.131,0,0,1,.154-1.272,1.177,1.177,0,0,1,1.268-.349,10.263,10.263,0,0,1-1.788,19.891A10.616,10.616,0,0,1,415.237,37.027Zm-7.582-5.383a.147.147,0,0,0-.123.069.167.167,0,0,0,0,.2,9.264,9.264,0,1,0,10.646-13.926.174.174,0,0,0-.193.053.138.138,0,0,0-.022.164,9.381,9.381,0,0,1-6.813,13.514h0a9.385,9.385,0,0,1-3.457-.065A.174.174,0,0,0,407.655,31.644Z" fill="gray"/>
+              </g>
+            </svg>
+          
           </button>
           <button id="light-theme">
-            <svg xmlns="http://www.w3.org/2000/svg" width="29.237" height="29.237" viewBox="0 0 29.237 29.237">
-              <g id="Grupo_205" data-name="Grupo 205" transform="translate(-3241.494 -27.018)">
-                <circle id="Elipse_49" data-name="Elipse 49" cx="6.544" cy="6.544" r="6.544" transform="translate(3249.569 35.186)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-                <g id="Grupo_201" data-name="Grupo 201">
-                  <line id="Línea_323" data-name="Línea 323" y2="6.523" transform="translate(3256.113 27.018)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-                  <line id="Línea_324" data-name="Línea 324" y2="6.523" transform="translate(3256.113 49.732)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="29.651" height="29.652" viewBox="0 0 29.651 29.652">
+              <g id="Grupo_12" data-name="Grupo 12" transform="translate(-579.819 -13.174)">
+                <path id="Trazado_1" data-name="Trazado 1" d="M594.645,34.93a7.044,7.044,0,1,1,7.044-7.044A7.053,7.053,0,0,1,594.645,34.93Zm0-13.088a6.044,6.044,0,1,0,6.044,6.044A6.05,6.05,0,0,0,594.645,21.842Z" fill="gray"/>
+                <g id="Grupo_1" data-name="Grupo 1">
+                  <rect id="Rectángulo_1" data-name="Rectángulo 1" width="1" height="4.523" transform="translate(594.145 13.174)" fill="gray"/>
                 </g>
-                <g id="Grupo_202" data-name="Grupo 202">
-                  <line id="Línea_325" data-name="Línea 325" x2="6.523" transform="translate(3241.494 41.49)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-                  <line id="Línea_326" data-name="Línea 326" x2="6.523" transform="translate(3264.209 41.49)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
+                <g id="Grupo_2" data-name="Grupo 2">
+                  <rect id="Rectángulo_2" data-name="Rectángulo 2" width="1" height="4.523" transform="translate(594.145 38.303)" fill="gray"/>
                 </g>
-                <g id="Grupo_203" data-name="Grupo 203">
-                  <line id="Línea_327" data-name="Línea 327" x2="4.612" y2="4.612" transform="translate(3245.505 31.153)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-                  <line id="Línea_328" data-name="Línea 328" x2="4.612" y2="4.612" transform="translate(3261.566 47.214)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
+                <g id="Grupo_5" data-name="Grupo 5">
+                  <g id="Grupo_3" data-name="Grupo 3">
+                    <rect id="Rectángulo_3" data-name="Rectángulo 3" width="4.523" height="1" transform="translate(579.819 27.386)" fill="gray"/>
+                  </g>
+                  <g id="Grupo_4" data-name="Grupo 4">
+                    <rect id="Rectángulo_4" data-name="Rectángulo 4" width="4.522" height="1" transform="translate(604.948 27.386)" fill="gray"/>
+                  </g>
                 </g>
-                <g id="Grupo_204" data-name="Grupo 204">
-                  <line id="Línea_329" data-name="Línea 329" y1="4.612" x2="4.612" transform="translate(3245.776 47.454)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
-                  <line id="Línea_330" data-name="Línea 330" y1="4.612" x2="4.612" transform="translate(3261.838 31.393)" fill="none" stroke="gray" stroke-miterlimit="10" stroke-width="1"/>
+                <g id="Grupo_8" data-name="Grupo 8">
+                  <g id="Grupo_6" data-name="Grupo 6">
+                    <rect id="Rectángulo_5" data-name="Rectángulo 5" width="1" height="4.523" transform="translate(583.808 17.756) rotate(-45)" fill="gray"/>
+                  </g>
+                  <g id="Grupo_7" data-name="Grupo 7">
+                    <rect id="Rectángulo_6" data-name="Rectángulo 6" width="1" height="4.523" transform="translate(601.577 35.525) rotate(-45)" fill="gray"/>
+                  </g>
+                </g>
+                <g id="Grupo_11" data-name="Grupo 11">
+                  <g id="Grupo_9" data-name="Grupo 9">
+                    <rect id="Rectángulo_7" data-name="Rectángulo 7" width="4.523" height="1" transform="translate(583.808 38.016) rotate(-45)" fill="gray"/>
+                  </g>
+                  <g id="Grupo_10" data-name="Grupo 10">
+                    <rect id="Rectángulo_8" data-name="Rectángulo 8" width="4.523" height="1" transform="translate(601.577 20.247) rotate(-45)" fill="gray"/>
+                  </g>
                 </g>
               </g>
             </svg>
+
           </button>
         </div>
 

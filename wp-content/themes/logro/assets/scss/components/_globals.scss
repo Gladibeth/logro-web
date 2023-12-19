@@ -859,6 +859,8 @@ input[type=search]{
 
   &__img{
     margin-right: 10px;
+    width: 40px;
+    height: 40px;
 
     @include respond-to(xs){
       display: flex;
@@ -877,6 +879,10 @@ input[type=search]{
       align-items: center;
       justify-content: center;
       margin-right: 0;
+    }
+    img{
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -974,6 +980,12 @@ input[type=search]{
            margin-bottom: 10px;
            margin-right: 0;
         }
+        a{
+          color: $primary;
+          font-family: $font-light;
+          font-size: 0.938em;
+          font-weight: $regular;
+        }
        
       }
     }
@@ -991,6 +1003,13 @@ input[type=search]{
       svg{
         margin-right: 10px;
       }
+
+      a{
+        color: $primary;
+        font-family: $font-light;
+        font-size: 0.938em;
+        font-weight: $regular;
+      }
     }
   }
 }
@@ -998,6 +1017,11 @@ input[type=search]{
 .main-works{
   &__img{
     height: calc(100vh - 85vh);
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
   &__item{
     margin: 0 4px;
