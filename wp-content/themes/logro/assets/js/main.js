@@ -18,10 +18,12 @@ jQuery('.slider-center').slick({
   centerMode: true,
 });
 
+
+
 jQuery('.slider-logos').slick({
   dots: false,
   speed: 300,
-  slidesToShow: 7,
+  slidesToShow: 5,
   responsive: [
     {
       breakpoint: 1024,
@@ -75,3 +77,6 @@ document.getElementById('dark-theme').addEventListener('click', function () {
   // Guarda el tema seleccionado en localStorage
   localStorage.setItem('theme', 'dark-theme');
 });
+
+
+

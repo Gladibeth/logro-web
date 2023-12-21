@@ -4,6 +4,13 @@ body.light-theme {
 body.dark-theme {
   background-color: $black;
 }
+body.light-theme .modal-images{
+  background-color: $white;
+}
+
+body.dark-theme .modal-images{
+  background-color: $black;
+}
 
 html {
   scroll-behavior: smooth;
@@ -17,6 +24,7 @@ body {
   width: 100%;
   overflow-x: hidden !important;
   margin: 0;
+  overflow-y: hidden;
   
 }
 
@@ -127,6 +135,13 @@ button{
     color: $white;
     transition: all ease-in-out .3s;
     cursor: pointer;
+  }
+
+  &.btn-outline{
+    padding: 4px 5px;
+    border-radius: 5px;
+    outline: 1px solid $border;
+    font-size: 12px;
   }
 
   &.btn-large{
@@ -419,19 +434,23 @@ button{
   padding: 10px 0;
 
   &__logo{
+    
     a{
       font-weight: 800;
       color: $primary;
       text-decoration: none;
-      font-size: 1.56em;
       font-family:$font-black;
       margin-right: 50px;
+      margin-top: -15px;
 
       @include respond-to(xs){
-       margin-right: 20px;
+       margin-right: 15px;
       }
       @include respond-to(sm){
         margin-right: 20px;
+      }
+      img{
+        width: 85px;
       }
     }
   }
@@ -468,7 +487,7 @@ button{
     @include respond-to(md){
       width: 190px;
     }
-    form{
+    .content-form-custom{
       @include respond-to(xs){
         display: none;
       }
@@ -477,6 +496,9 @@ button{
       }
       @include respond-to(md){
         display: none;
+      }
+      fieldset{
+        padding: 0;
       }
     }
   }
@@ -1072,6 +1094,287 @@ input[type=search]{
       content: " ";
       transform: rotate(135deg);
       margin: 8px !important;
+    }
+  }
+}
+
+.modal-images{
+  display: flex;
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background-color: $white;
+  top: 0;
+  z-index: 999999;
+
+  &.inactive{
+    display: none;
+  }
+  &__header{
+    border-bottom: 1px solid $primary;
+    width: 100%;
+  }
+  &__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 0 0 auto;
+    padding-right: 20px;
+
+    &-item{
+      &:nth-child(1), &:nth-child(3){
+        a{
+          display: flex;
+          align-items: center;
+          svg{
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    a{
+      text-decoration: none;
+      color: $primary;
+
+      svg{
+        fill: $primary;
+        path{
+          fill: $primary;
+        }
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    padding-bottom: 10px;
+    a{
+      margin-right: 10px;
+    }
+  }
+  &__info{
+    width: 65%;
+    margin: 0 auto;
+    display: grid;
+    padding: 20px 0;
+    grid-template-columns: 1fr 1fr;
+    dl{
+      margin: 3px 0;
+    }
+    &-item{
+      display: flex;
+      color: $primary;
+      font-family: $font-light;
+      font-size: 0.87em;
+      font-weight: $regular;
+      margin: 0px;
+      dd{
+        margin-left: 20px;
+      }
+    }
+  }
+  &__description{
+    text-align: center;
+    h3{
+      color: $primary;
+      font-family: $font-titles;
+      font-size: 1.25em;
+      font-weight: $regular;
+      text-transform: uppercase;
+    }
+    p{
+      color: $primary;
+      font-family: $font-light;
+      font-size: 0.87em;
+      font-weight: $regular;
+      margin: 0px;
+      padding-bottom: 20px;
+    }
+  }
+  &__content{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    @include respond-to(xs){
+      width: 80%;
+    }
+    @include respond-to(xs){
+      width: 80%;
+    }
+    @include respond-to(md){
+      width: 80%;
+    }
+  }
+  &__slider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    width: 80%;
+    .carousel-inner{
+      width: 80%;
+      margin: 0 auto;
+    }
+    .carousel-item{
+      &.active{
+        display: flex;
+        justify-content: center;
+      }
+      &::before{
+        width: 80%;
+      }
+    }
+    .carousel-control-prev,
+    .carousel-control-next{
+      top: 55%;
+      background: transparent;
+    }
+    .carousel-control-prev{
+      span{
+        &:before{
+          color: #0E5875;
+          font-size: 25px;
+          display: block;
+          margin: 8px 10px;
+          width: 12px;
+          height: 12px;
+          border-top: 3px solid $primary;
+          border-left: 3px solid $primary;
+          content: " ";
+          transform: rotate(-45deg);
+
+        }
+      }
+    }
+    .carousel-control-next{
+      span{
+        &:before{
+          color: #0E5875;
+          font-size: 25px;
+          display: block;
+          width: 12px;
+          height: 12px;
+          border-top: 3px solid $primary;
+          border-left: 3px solid $primary;
+          content: " ";
+          transform: rotate(135deg);
+          margin: 10px -20px !important;
+        }
+      }
+    }
+  }
+  
+  span{
+    font-family: $font-titles;
+  }
+  &__img{
+    width: 80%;
+    border: 1px solid $border;
+    border-radius: 10px;
+    height: 300px;
+
+    @include respond-to(xs){
+      width: 100%;
+      height: 450px;
+    }
+    @include respond-to(sm){
+      width: 100%;
+      height: 450px;
+    }
+    @include respond-to(md){
+      width: 100%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.carousel-item{
+  display: none;
+ 
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  &.active{
+    display: block;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out forwards;
+
+  }
+  .container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.carousel-control-prev{
+  position: absolute;
+  top: 115px;
+  z-index: 999;
+  left: 0;
+  background: #ffffff80;
+  border: none;
+  width: 20px;
+  height: 40px;
+  &:hover{
+    cursor: pointer;
+  }
+  .carousel-control-prev-icon{
+    position: relative;
+
+    &:before{
+      position: absolute;
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-left: 3px solid $primary;
+      border-top: 3px solid $primary;
+      transform: rotate(312deg) translate(0%, -50%);
+      transform-origin: center;
+      top: 0 !important;
+      margin: -2px 0px;
+
+    }
+  }
+}
+
+.carousel-control-next{
+  position: absolute;
+  top: 115px;
+  z-index: 999;
+  right: 0;
+  background: #ffffff80;
+  border: none;
+  width: 20px;
+  height: 40px;
+
+  &:hover{
+    cursor: pointer;
+  }
+  .carousel-control-next-icon{
+    position: relative;
+
+    &:before{
+      position: absolute;
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-left: 3px solid $primary;
+      border-top: 3px solid $primary;
+      transform: rotate(132deg) translate(0%, -50%);
+      transform-origin: center;
+      top: 0 !important;
+      margin: -8px -10px;
     }
   }
 }

@@ -25,7 +25,7 @@
     <div class="main-left ">
       <div class="main-logos g-mb-mobile g-border g-height-left-container">
         <header class="g-pgeneral g-border-bottom">
-          <h2 class="main-subtitle">Logos</h2>
+          <h2 class="main-subtitle"><?php the_field('titulo_seccion_logos','option') ?></h2>
         </header>
         <div class="main-logos__list g-height-left-item main-scrollbar  <?php echo wp_is_mobile() ? 'g-mobile' : 'g-desk'; ?> ">
           <div class="<?php echo wp_is_mobile() ? 'slider-logos' : ''; ?> ">
@@ -43,8 +43,63 @@
           if ($clientes_query->have_posts()) {
               while ($clientes_query->have_posts()) {
                   $clientes_query->the_post();
+
+                  $logo_cliente = get_field('logo_cliente',$clientes_query->ID);
+                  $clients_gallery = $logo_cliente['galeria_del_logo'];
+                  // var_dump($clients_gallery);
+                  $clients_gallery_item = [];
+                  if (is_array($clients_gallery)) {
+                      $clients_gallery_item = array_map(function($item) {
+                          return [
+                              'url_image' => $item['imagen_galeria']['url'],
+                              'title' => $item['titulo'],
+                              'description' => $item['descripcion'],
+                          ];
+                      }, $clients_gallery);
+                  }
+
+                    $work_cliente = get_field('trabajo_cleinte',$clientes_query->ID);
+                    $work_gallery = $work_cliente['galeria_de_trabajo'];
+                    // var_dump($work_gallery);
+                    $work_gallery_item = [];
+
+                    if (is_array($work_gallery)) {
+                        $work_gallery_item = array_map(function($item) {
+                            return [
+                                'url_image' => $item['imagen_galeria_work']['url'],
+                                'title' => $item['titulo'],
+                                'description' => $item['descripcion'],
+                            ];
+                        }, $work_gallery);
+                
+                    }
+
+                    $info_general = get_field('informacion_general_del_cliente',$clientes_query->ID);
+                    $info_general_item = [];
+
+                    if (is_array($info_general)) {
+                      $info_general_item = array_map(function($item1) {
+                          return [
+                              'title_info' => $item1['titulo'],
+                              'description_info' => $item1['valor'],
+                          ];
+                      }, $info_general);
+              
+                  }
+                  
+                  $url_article = get_field('enlace_de_articulo',$clientes_query->ID);
+
+                  $url_record = get_field('enlace_de_ficha',$clientes_query->ID);
+                  
                   ?>
-                  <article class="main-logos__item g-border-top">
+
+                  <article class="main-logos__item g-border-top item-logo"  data-gallery='<?php echo json_encode($clients_gallery_item);?>'
+                  data-gallery-secundary='<?php echo json_encode($work_gallery_item);?>' 
+                  data-info='<?php echo json_encode($info_general_item);?>'
+                  data-title='<?php echo the_title();?>'
+                  data-article='[<?php echo json_encode($url_article); ?>]'
+                  data-record='[<?php echo json_encode($url_record); ?>]'
+                  >
                       <div class="main-logos__img">
                       <?php if(get_field('logo_cliente')['logo_principal']):?>
                         <img src=" <?php echo get_field('logo_cliente')['logo_principal']; ?>" alt="">
@@ -73,7 +128,7 @@
       <div class="main-notes g-mb-mobile g-border g-height-center-container">
         <div class="g-border-bottom">
           <header class="g-pgeneral flex-header">
-            <h2 class="main-subtitle">Notas</h2>
+            <h2 class="main-subtitle"><?php the_field('titulo_seccion_notas','option') ?></h2>
             <div class=" main-formsearch  g-mobile">
               <form class="main-formsearch__form" action="" method="get">
                  <div class="main-formsearch__input">
@@ -155,112 +210,21 @@
     </div>
     <div class="main-right">
       <div class="g-height-center-container">
-        <div class="main-works g-mb-mobile g-border g-height-item-small g-mb20">
-          <header class="g-pgeneral">
-            <h2 class="main-subtitle">Works</h2>
-          </header>
-          <div class="main-works__list g-mb20 slider-center ">
-          <?php
-          // Argumentos para la consulta
-          $args = array(
-              'post_type' => 'customer',
-              'posts_per_page' => -1 // Obtener todos los posts
-          );
+        <!-- works -->
+        <?php  get_template_part('template-part/content-work');  ?>
 
-          // La consulta
-          $clientes_query = new WP_Query($args);
+        <!-- shops -->
+        <?php  get_template_part('template-part/content-shop');  ?>
 
-          // Loop a través de los posts
-          if ($clientes_query->have_posts()) {
-              while ($clientes_query->have_posts()) {
-                  $clientes_query->the_post();
-                  ?>
-            <article class="main-works__item g-border">
-              <div class="main-works__img">
-                <?php if(get_field('trabajo_cleinte')['trabajo_principal']):?>
-                    <img src=" <?php echo get_field('trabajo_cleinte')['trabajo_principal']; ?>" alt="">
-                <?php endif; ?>
-              </div>
-            </article>
-            <?php
-              }
-              wp_reset_postdata(); 
-          } else {
-            echo '<p class="main-description">No se encontraron entradas.</p>';
-          }
-          ?>
-          </div>
-        </div>
-        <div class="main-shops g-border g-height-item-small g-mb20 ">
-          <header class="g-pgeneral">
-            <h2 class="main-subtitle">Shops</h2>
-          </header>
-          <div class="main-shops__list g-main-grid__two g-pgeneral g-mb20">
-          <?php
-            $args = array(
-              'post_type' => 'shops',
-              'posts_per_page' => 4 
-          );
+       <!-- gift -->
+       <?php  get_template_part('template-part/content-gift');  ?>
 
-          $post_query = new WP_Query($args);
-
-          if ($post_query->have_posts()) {
-              while ($post_query->have_posts()) {
-                  $post_query->the_post();
-            ?>
-            <article class="main-shops__item g-border g-pgeneral-10">
-              <div  class="main-shops__text ">
-                <a href="<?php echo get_field('enlace'); ?>" class="main-description g-textshort-one"><?php the_title(); ?></a>
-              </div>
-            </article>
-            <?php
-              }
-              wp_reset_postdata();
-              } else {
-                echo '<p class="main-description">No se encontraron entradas.</p>';
-              }
-            ?>
-            
-          </div>
-        </div>
-        <div class="main-notes g-border g-height-item-small ">
-          <header class="g-pgeneral g-border-bottom">
-            <h2 class="main-subtitle">GIFTS</h2>
-          </header>
-          <div class="main-notes__list g-height-item-small-gift main-scrollbar">
-          <?php
-          $category_id = get_cat_ID('GIFTS');
-
-          $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => 10,
-            'cat' => $category_id
-        );
-
-        $post_query = new WP_Query($args);
-
-        if ($post_query->have_posts()) {
-            while ($post_query->have_posts()) {
-                $post_query->the_post();
-          ?>
-            <article class="main-notes__item g-border-top g-pgeneral-10">
-              <a href="<?php the_permalink(); ?>" class="main-notes__text">
-                <h3 class="main-subtitle main-subtitle__small g-textshort-one "><?php the_title(); ?></h3>
-                <div class="main-description g-textshort-one no-mobile "><?php the_excerpt(); ?></div>
-              </a>
-            </article>
-            <?php
-              }
-              wp_reset_postdata();
-              } else {
-                  echo '<p class="main-description">No se encontraron entradas.</p>';
-              }
-            ?>
-          </div>
-        </div>
       </div>
       
     </div>
   </section>
 
+  
+
   <?php get_footer(); ?>
+

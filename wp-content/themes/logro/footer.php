@@ -4,7 +4,7 @@
   $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u=' . $urlArticulo;
   $twitterURL = 'https://twitter.com/intent/tweet?text=' . $titleArticulo . '&amp;url=' . $urlArticulo . '&amp;via';
   $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url=' . $urlArticulo . '&amp;title=' . $titleArticulo;
-  $whatsAppURL = 'https://wa.me/?text='.$urlArticulo;
+  $whatsAppURL = 'https://wa.me/?text=Esto te puede interesar, míralo:'.$urlArticulo;
   $emailURL = 'mailto:?subject=Te comparto un link de la web de logro.com - '.$titleArticulo.'&amp;body=Creo que te puede interesar este link de la web de logro.com - '.$urlArticulo.'.%0D%0D Un saludo,';
 ?>
 <footer class="main-footer main-content__medium">
@@ -105,9 +105,53 @@
     </div>
   </footer>
 
+  <div class="modal-images inactive">
+    <div class="modal-images__content">
+
+      <div class="modal-images__slider g-border">
+        <div class="modal-images__header">
+          <div class="modal-images__top">
+            <div>
+              <h2 class="modal-images__title main-subtitle"></h2>
+              <div class="modal-images__buttons">
+
+              </div>
+            </div>
+            <a href="" class="btn-closed">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.4099 12.0002L19.7099 5.71019C19.8982 5.52188 20.004 5.26649 20.004 5.00019C20.004 4.73388 19.8982 4.47849 19.7099 4.29019C19.5216 4.10188 19.2662 3.99609 18.9999 3.99609C18.7336 3.99609 18.4782 4.10188 18.2899 4.29019L11.9999 10.5902L5.70994 4.29019C5.52164 4.10188 5.26624 3.99609 4.99994 3.99609C4.73364 3.99609 4.47824 4.10188 4.28994 4.29019C4.10164 4.47849 3.99585 4.73388 3.99585 5.00019C3.99585 5.26649 4.10164 5.52188 4.28994 5.71019L10.5899 12.0002L4.28994 18.2902C4.19621 18.3831 4.12182 18.4937 4.07105 18.6156C4.02028 18.7375 3.99414 18.8682 3.99414 19.0002C3.99414 19.1322 4.02028 19.2629 4.07105 19.3848C4.12182 19.5066 4.19621 19.6172 4.28994 19.7102C4.3829 19.8039 4.4935 19.8783 4.61536 19.9291C4.73722 19.9798 4.86793 20.006 4.99994 20.006C5.13195 20.006 5.26266 19.9798 5.38452 19.9291C5.50638 19.8783 5.61698 19.8039 5.70994 19.7102L11.9999 13.4102L18.2899 19.7102C18.3829 19.8039 18.4935 19.8783 18.6154 19.9291C18.7372 19.9798 18.8679 20.006 18.9999 20.006C19.132 20.006 19.2627 19.9798 19.3845 19.9291C19.5064 19.8783 19.617 19.8039 19.7099 19.7102C19.8037 19.6172 19.8781 19.5066 19.9288 19.3848C19.9796 19.2629 20.0057 19.1322 20.0057 19.0002C20.0057 18.8682 19.9796 18.7375 19.9288 18.6156C19.8781 18.4937 19.8037 18.3831 19.7099 18.2902L13.4099 12.0002Z" fill="white"></path>
+              </svg>
+            </a>
+          </div>
+          
+
+        </div>
+        <div class="modal-images__info">
+           
+    
+        </div>
+        <div class="carousel-inner  modal-images__sliderAll slider-center-modal">
+         
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden"></span>
+          </button>
+     
+      </div>
+    </div>
+  </div>
+
   <?php wp_footer(); ?>
 
   <script>
+  try{
+
     // Función para repetir contenido en un contenedor dado
     function repeatContent(selector) {
         var container = document.querySelector(selector);
@@ -140,6 +184,169 @@
         repeatContent(".main-notes_list");
         // Añade más llamadas a repeatContent según sea necesario para otros contenedores
     });
+    document.querySelector('.carousel-control-prev').addEventListener('click', function () {
+        navigateCarousel(-1);
+    });
+    
+    document.querySelector('.carousel-control-next').addEventListener('click', function () {
+        navigateCarousel(1);
+    });
+    
+    document.querySelectorAll('.btn-closed').forEach(function (btn) {
+        btn.addEventListener('click', function (event) {
+            event.preventDefault();
+            closePopup();
+        });
+    });
+    
+    function navigateCarousel(direction) {
+        var activeElement = document.querySelector('.active');
+        var targetElement = direction === -1 ? activeElement.previousElementSibling : activeElement.nextElementSibling;
+    
+        if (!targetElement) {
+            targetElement = direction === -1 ? document.querySelector('.carousel-item:last-child') : document.querySelector('.carousel-item:first-child');
+        }
+    
+        activeElement.classList.remove('active');
+        targetElement.classList.add('active');
+        document.querySelector('.images-slider__current').innerHTML = targetElement.getAttribute('data-id');
+    }
+    
+    function closePopup() {
+        document.querySelector('.modal-images').classList.add('inactive');
+        document.querySelector('.modal-images__sliderAll').innerHTML = ''; 
+        document.querySelector('.modal-images__buttons').innerHTML = '';
+        document.querySelector('.modal-images__info').innerHTML = '';
+    }
+
+    const popup = document.querySelector('.modal-images');
+    const works = document.querySelectorAll('.item-work, .item-logo');
+    works.forEach(function (work) {
+      buildGallery(work)
+    });
+
+
+    function updateGallery(item, index, contentImageSlider){
+      const divItem = document.createElement('div');
+      divItem.setAttribute('data-id', index + 1);
+      divItem.setAttribute('class', index === 0 ? 'carousel-item active' : 'carousel-item');
+
+      const divItemContainer = document.createElement('div');
+      divItemContainer.setAttribute('class', 'container');
+
+      const divContText = document.createElement('div');
+      divContText.setAttribute('class', 'modal-images__description');
+      const h3Title = document.createElement('h3');
+      const pDescription = document.createElement('p');
+      h3Title.textContent = item['title'];
+      pDescription.textContent = item['description'];
+      divContText.appendChild(h3Title);
+      divContText.appendChild(pDescription);
+
+      
+      if (item['url_image']) {
+          const divItemContainerImg = document.createElement('div');
+          divItemContainerImg.setAttribute('class', 'modal-images__img');
+
+          const imgItem = document.createElement('img');
+          imgItem.setAttribute('src', item['url_image']);
+
+          divItemContainerImg.append(imgItem);
+          divItemContainer.append(divItemContainerImg);
+      }
+      divItemContainer.appendChild(divContText);
+      divItem.append(divItemContainer);
+      contentImageSlider.append(divItem);
+    }
+
+    function buildGallery(element){
+      element.addEventListener('click', function () {
+        const contentImageSlider = document.querySelector('.modal-images__sliderAll');
+        const list_gallery = this.getAttribute('data-gallery');
+        const array_list_gallery = JSON.parse(list_gallery);
+
+        const list_gallery_logo = this.getAttribute('data-gallery-secundary');
+        const array_list_gallery_logo = JSON.parse(list_gallery_logo);
+
+        const title = this.getAttribute('data-title');
+        document.querySelector('.modal-images__title').textContent = title;
+      
+        const list_info = this.getAttribute('data-info');
+        const array_list_info = JSON.parse(list_info);
+        const buttons = document.querySelector('.modal-images__buttons');
+
+        const url_attr_article = this.getAttribute('data-article');
+        const array_url_attr_article = JSON.parse(url_attr_article );
+        if(array_url_attr_article.length > 0) {
+          array_url_attr_article.forEach(function(item,index){
+            const button = document.createElement('a');
+            button.setAttribute('class', 'btn-custom btn-outline');
+            button.setAttribute('href', item['url']);
+            button.textContent = 'Articulo';
+            buttons.appendChild(button);
+
+          })
+        }
+
+        const url_attr_record = this.getAttribute('data-record');
+        const array_url_attr_record = JSON.parse(url_attr_record);
+        if(array_url_attr_record.length > 0) {
+          array_url_attr_record.forEach(function(item,index){
+            const button = document.createElement('a');
+            button.setAttribute('class', 'btn-custom btn-outline');
+            button.setAttribute('href', item['url']);
+            button.textContent = 'Ficha';
+            buttons.appendChild(button);
+
+          })
+        }
+
+            
+        if(array_list_info.length > 0) {
+          array_list_info.forEach(function (item1, index) {
+            const contentInfo = document.querySelector('.modal-images__info');
+            const contentInfoDl = document.createElement('dl');
+            const contentInfoItem = document.createElement('div');
+            contentInfoItem.setAttribute('class', 'modal-images__info-item');
+            const contentInfoDt = document.createElement('dt');
+            const contentInfoDd = document.createElement('dd');
+            contentInfoDt.textContent = item1['title_info'];
+            contentInfoDd.textContent = item1['description_info'];
+            contentInfoItem.appendChild(contentInfoDt);
+            contentInfoItem.appendChild(contentInfoDd);
+            contentInfoDl.appendChild(contentInfoItem);
+            contentInfo.appendChild(contentInfoDl);
+          })
+
+        }
+
+        if(array_list_gallery_logo.length > 0){
+          const button = document.createElement('a');
+          button.setAttribute('class', 'btn-custom btn-outline');
+          button.setAttribute('id', 'gallery-logo');
+          button.textContent = 'Logo';
+          buttons.appendChild(button);
+
+          button.addEventListener('click', function(){
+            contentImageSlider.innerHTML = '';
+            array_list_gallery_logo.forEach(function (item, index) {
+              updateGallery(item, index, contentImageSlider);
+            });
+          })
+        }
+    
+        if (array_list_gallery.length > 0) {
+          popup.classList.remove('inactive');
+          array_list_gallery.forEach(function (item, index) {
+            updateGallery(item, index, contentImageSlider);
+          });
+        }
+      });
+    }
+
+}catch(error){
+    console.log(error);
+}
 </script>
 
 </body>
